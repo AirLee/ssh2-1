@@ -20,18 +20,18 @@
 	</bean>
 	
 	<!-- DAO -->
-	<bean id="userDAO" class="org.hyan.DAOImpl.UserDAOImpl">
+	<bean id="studentDAO" class="org.hanfeng.hibernateDAO.Impl.StudentDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 	<!-- SERVICE -->
-	<bean id="userService" class="org.hyan.serviceImpl.UserServiceImpl">
-		<property name="userDAO" ref="userDAO"></property>
+	<bean id="studentService" class="org.hanfeng.service.impl.StudentServiceImpl">
+		<property name="studentDAO" ref="studentDAO"></property>
 	</bean>
 	
 	<!-- ACTION -->
-	<bean id="getUsers" class="org.hyan.action.UserAction">
-		<property name="userService" ref="userService"></property>
+	<bean id="getUsers" class="org.hanfeng.action.StudentAction">
+		<property name="studentService" ref="studentService"></property>
 	</bean>
 	
 	<!-- TRANSACTION CONTROLER -->
@@ -49,8 +49,4 @@
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* org.hyan.service.*Service.*(..))"/>
 	</aop:config>
 	
-	<bean id="UserDAO" class="org.hyan.entity.UserDAO">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean></beans>
+	</beans>
